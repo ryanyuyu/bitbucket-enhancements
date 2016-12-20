@@ -1,13 +1,3 @@
-// ==UserScript==
-// @name         Bitbucket scroll to new comment in pull request
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  Augment bitbucket pull request interface with a button that scrolls you to the new comment section
-// @author       Ryan Yuyuenyongwatana
-// @match        https://bitbucket.org/*/pull-requests/*
-// @grant        none
-// ==/UserScript==
-
 (function () {
     
     activate();
@@ -19,7 +9,8 @@
     function addScrollToNewCommentButton() {
         var parentContainer = $('div.pull-request-title');
         
-        var btn = $('<button type="button" id="customScrollToNewCommentButton" onclick="scrollToNewComment()" style="">Go To New Comment</button>');
+        var btn = $('<button type="button" id="customScrollToNewCommentButton" style="">Go To New Comment</button>')
+                      .on('click', scrollToNewComment);
         parentContainer.append(btn);
     }
 
